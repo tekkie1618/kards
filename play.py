@@ -1,5 +1,3 @@
-from collections import defaultdict
-
 from deck import Deck
 from hand import Hand
 from check_score import check_score
@@ -16,9 +14,10 @@ def play(num_players: int, starting_cards: int, number_of_decks: int = 1):
         hands.append(hand.cards)
         print(f"{hand.cards}\n")
     score = check_score(hands)
-    # print(f"Results\nWinner: Player(s) {score['winning_players']}\nScore: {score['winning_hand_name']}\nHand: {score['winning_hand']}\n")
     print(
-        f"Results\nWinner: Player(s) {[x + 1 for x in score['winning_players']]}\nScore: {score['winning_hand_name']}\nHand: {score['winning_hand']}\n"
+        # ! TODO FIX
+        f"Results\nWinner: Player(s) {[x + 1 for x in list(score['winning_players'])]}\nScore: {score['winning_hand_name']}\nHand: {score['winning_hand']}\n"
+        # f"Results\nWinner: Player(s) {score['winning_players']}\n"
     )
     print(f"Scores\n{score}\n")
 
