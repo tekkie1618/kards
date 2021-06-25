@@ -1,14 +1,19 @@
 version: "3.7"
 
 services:
-    app:
-        container_name: app
-        build: app
+    api:
+        container_name: api
+        build: api
         restart: always
         networks:
             - api-network
         ports:
             - 5000:80
+
+    app:
+        container_name: app
+        build: app
+        restart: always
 
     web:
         container_name: web
@@ -17,7 +22,12 @@ services:
         networks:
             - api-network
         ports:
-            - 5001:80
+            - 8000:80
+
+    venv:
+        container_name: venv
+        build: venv
+        restart: always
 
 networks:
     api-network:

@@ -1,6 +1,8 @@
 FROM python:3.9.2 AS builder
-COPY requirements.txt .
 
+ENV PYTHONBUFFERED 1
+
+COPY requirements.txt .
 RUN mkdir pip_cache
 RUN pip install --upgrade pip
 RUN pip install --user -r requirements.txt --cache-dir $HOME/pip_cache
@@ -14,4 +16,4 @@ COPY ./src .
 ENV PATH=/root/.local:$PATH
 ENV PATH=/root/.local/bin:$PATH
 
-CMD ["python", "main.py"]
+CMD ["python", "manage.py", "runserver 0.0.0.0:8000"]
