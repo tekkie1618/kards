@@ -15,6 +15,3 @@ COPY ./src .
 
 ENV PATH=/root/.local:$PATH
 ENV PATH=/root/.local/bin:$PATH
-
-#CMD ["python", "manage.py", "runserver 0.0.0.0:5000"]
-RUN manage.py 0.0.0.0:5000

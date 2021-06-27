@@ -2,32 +2,29 @@ version: "3.7"
 
 services:
     api:
-        container_name: api
+        container_name: kards_api
         build: api
         restart: always
+        command: python manage.py runserver 0.0.0.0:8080
         networks:
             - api-network
         ports:
-            - 5000:80
+            - 5050:8080
 
     app:
-        container_name: app
+        container_name: kards_app
         build: app
         restart: always
 
     web:
-        container_name: web
+        container_name: kards_web
         build: web
         restart: always
+        command: python manage.py runserver 0.0.0.0:8080
         networks:
             - api-network
         ports:
-            - 8000:80
-
-    venv:
-        container_name: venv
-        build: venv
-        restart: always
+            - 8050:8080
 
 networks:
     api-network:
